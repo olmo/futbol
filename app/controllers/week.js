@@ -4,7 +4,7 @@ var Rating = require('../models/rating');
 Date.prototype.addHours= function(h){
     this.setHours(this.getHours()+h);
     return this;
-}
+};
 
 exports.list = function(req, res, next) {
     var query = Week.find();
@@ -33,7 +33,7 @@ exports.create = function(req, res, next) {
 exports.update = function(req, res, next) {
     createTeams(req.body.players, function(teams){
         Week.update({_id: req.body._id}, {
-            date: new Date(req.body.date).addHours(22),
+            date: new Date(req.body.date),
             players: req.body.players,
             substitutes: req.body.substitutes,
             team1: teams.team1,
