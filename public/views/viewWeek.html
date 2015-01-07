@@ -1,0 +1,43 @@
+<div class="container col-sm-12 col-md-8 col-lg-8">
+    <div class="panel panel-default ">
+        <div class="panel-heading">
+            Semana {{week.date | date : 'dd/MM/yyyy'}}
+            <a href="javascript:;" ng-click="deleteWeek()"><span class="pull-right glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            <a ng-href="/weeks/update/{{week._id}}"><span class="pull-right glyphicon glyphicon-edit" aria-hidden="true"  style="margin-right: 5px;"></span></a>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div style="margin-left:15px; margin-right: 15px;">
+                        <table class="table table-striped text-center">
+                            <thead>
+                            <tr><th class="text-center">Equipo Negro</th></tr>
+                            </thead>
+                            <tbody><tr ng-repeat="player in week.team1 | orderBy:'-name':true"><td>{{player.name}}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div style="margin-left:15px; margin-right: 15px;">
+                        <table class="table table-striped text-center">
+                            <thead>
+                            <tr><th class="text-center">Equipo Blanco</th></tr>
+                            </thead>
+                            <tbody><tr ng-repeat="player in week.team2 | orderBy:'-name':true"><td>{{player.name}}</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">Suplentes:
+                    <span ng-repeat="player in week.substitutes | orderBy:'-name':true">{{player.name}}{{$last ? '' : ', '}}</span>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 10px;">
+                <a ng-href="whatsapp://send?text=Equipo Negro: {{commas(week.team1)}}. Equipo Blanco: {{commas(week.team2)}}." data-action="share/whatsapp/share" title="Compartir en WhatsApp" class="btn btn-default btn-md">Compartir</a>
+            </div>
+        </div>
+    </div>
+</div>

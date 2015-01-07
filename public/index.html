@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peña Rock</title>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="stylesheet" href="stylesheets/angular-bootstrap-calendar.min.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="stylesheets/select.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+
+
+</head>
+<body>
+  <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="/">
+        Peña<strong>Rock</strong></a>
+    </div>
+
+      <ul class="nav navbar-nav">
+        <li data-match-route="/$"><a href="/">Inicio</a></li>
+        <li data-match-route="/valoraciones" ng-if="currentUser"><a href="/valoraciones">Valorar Jugadores</a></li>
+        <li data-match-route="/weeks/add" ng-if="currentUser.roles.indexOf('admin')!=-1"><a href="/weeks/add">Añadir Jornada</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+        <li data-match-route="/login"><a href="/login">Entrar</a></li>
+        <li data-match-route="/signup"><a href="/signup">Registro</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right" ng-if="currentUser">
+        <li class="navbar-text" ng-bind="currentUser.name"></li>
+        <li><a href="javascript:void(0)" ng-click="logout()">Salir</a></li>
+      </ul>
+
+  </div>
+
+  <div ui-view></div>
+
+  <script src="app.min.js"></script>
+  <script src="templates.js"></script>
+
+</body>
+</html>

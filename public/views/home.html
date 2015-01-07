@@ -1,0 +1,35 @@
+<div ui-view></div>
+
+<div class="container col-xs-12 col-sm-12 col-md-4 col-lg-4 pull-right">
+    <div class="panel panel-default">
+        <div class="panel-heading">Calendario</div>
+        <div class="panel-body">
+            <div class="row">
+                <h3 class="text-center">{{ calendarControl.getTitle() }}</h3>
+                <div class="col-md-12 text-center" style="margin-bottom:15px;">
+                    <div class="btn-group">
+
+                        <button class="btn btn-default" ng-click="calendarControl.prev()">Anterior</button>
+                        <button class="btn btn-default" ng-click="setCalendarToToday()">Hoy</button>
+                        <button class="btn btn-default" ng-click="calendarControl.next()">Siguiente</button>
+                    </div>
+                </div>
+
+                <br>
+
+                <mwl-calendar
+                        calendar-events="events"
+                        calendar-view="calendarView"
+                        calendar-current-day="calendarDay"
+                        calendar-control="calendarControl"
+                        calendar-event-click="eventClicked($event)"
+                        calendar-edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                        calendar-delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                        calendar-edit-event-click="eventEdited($event)"
+                        calendar-delete-event-click="eventDeleted($event)"
+                        calendar-auto-open="true"
+                        ></mwl-calendar>
+            </div>
+        </div>
+    </div>
+</div>
