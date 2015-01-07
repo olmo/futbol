@@ -10,7 +10,7 @@
                     <tr><th class="text-center">Nombre</th><th class="text-center">Puntuación</th></tr>
                     </thead>
                     <tbody><tr ng-repeat="user in users"><td>{{user.name}}</td>
-                        <td><rating ng-model="vals[$index].value" max="max" readonly="isReadonly" ng-click="setRating($index)" on-leave="overStar = null"></rating></td>
+                        <td><rating ng-model="vals[$index].value" max="max" readonly="isReadonly" ng-click="setRating($index)" on-leave="overStar = null" readonly="isReadonly" ></rating></td>
                     </tr></tbody>
                 </table>
             </div>
