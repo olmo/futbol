@@ -36,8 +36,9 @@ angular.module('MyApp')
 
 
         $scope.setRating = function(id) {
-            Rating.save($scope.vals[id], function(){
-                getRatings();
+            var element = Rating.save($scope.vals[id], function(){
+                $scope.vals[id]._id = element._id;
+                $scope.vals[id].value = element.value;
             });
         };
 

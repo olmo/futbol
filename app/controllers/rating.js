@@ -12,9 +12,9 @@ exports.list = function(req, res, next) {
 
 exports.rate = function(req, res, next) {
     if(req.body.hasOwnProperty("_id")){
-        Rating.update({_id: req.body._id}, {value: req.body.value}, function(err){
+        Rating.update({_id: req.body._id}, {value: req.body.value}, function(err, element){
             if (err) return next(err);
-            res.send(200);
+            res.send(element);
         });
     }
     else{
@@ -22,9 +22,9 @@ exports.rate = function(req, res, next) {
             user: req.user.id,
             player: req.body.player,
             value: req.body.value
-        }, function(err) {
+        }, function(err, element) {
             if (err) return next(err);
-            res.send(200);
+            res.send(element);
         });
     }
 };
