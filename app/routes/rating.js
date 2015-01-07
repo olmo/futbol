@@ -3,10 +3,14 @@ var users = require('../controllers/users');
 
 module.exports = function(app) {
     app.route('/api/rating')
-        .post(users.requiresLogin, rating.rate);
-
-    app.route('/api/rating')
+        .post(users.requiresLogin, rating.rate)
         .get(users.requiresLogin, rating.list);
+
+    app.route('/api/rating/average')
+        .get(rating.average);
+
+    app.route('/api/rating/listPopulated')
+        .get(rating.listPopulated);
 
     //.put(users.requiresLogin, articles.hasAuthorization, articles.update)
     //.delete(users.requiresLogin, articles.hasAuthorization, articles.delete);
