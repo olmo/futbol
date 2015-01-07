@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var ratingSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.ObjectId },
-    player: {type: mongoose.Schema.ObjectId},
+    user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+    player: {type: mongoose.Schema.ObjectId, ref: 'User'},
     value: {type: Number}
 });
 
