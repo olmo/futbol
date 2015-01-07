@@ -5,7 +5,7 @@ angular.module('MyApp')
         $scope.rate = 2;
 
         function getRatings() {
-            var rats = Rating.query();
+            var ratings = Rating.query();
             $scope.vals = [];
 
             $scope.users = User.query(function () {
@@ -13,13 +13,13 @@ angular.module('MyApp')
                 var added = false;
                 for (i = 0; i < $scope.users.length; ++i) {
                     added = false;
-                    for (j = 0; j < rats.length; ++j) {
-                        if (rats[j].player === $scope.users[i]._id) {
+                    for (j = 0; j < ratings.length; ++j) {
+                        if (ratings[j].player === $scope.users[i]._id) {
                             $scope.vals.push({
-                                _id: rats[j]._id,
-                                user: rats[j].user,
-                                player: rats[j].player,
-                                value: rats[j].value
+                                _id: ratings[j]._id,
+                                user: ratings[j].user,
+                                player: ratings[j].player,
+                                value: ratings[j].value
                             });
                             added = true;
                             break;

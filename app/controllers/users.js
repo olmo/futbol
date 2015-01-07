@@ -24,7 +24,7 @@ exports.logout = function(req, res, next) {
 };
 
 exports.list = function(req, res, next) {
-    var query = User.find();
+    var query = User.find().sort('name');
 
     query.exec(function(err, users) {
         if (err) return next(err);
