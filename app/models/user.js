@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
         }],
         default: ['user']
     },
-    enabled: {type: Number}
+    enabled: {type: Number, default: 1}
 });
 
 userSchema.pre('save', function(next) {
