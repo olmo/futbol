@@ -14,17 +14,24 @@ exports.signup = function(req, res, next) {
     });
     user.save(function(err) {
         if (err) return next(err);
-        res.send(200);
+        res.sendStatus(200);
     });
 };
 
 exports.logout = function(req, res, next) {
     req.logout();
-    res.send(200);
+    res.sendStatus(200);
 };
 
 exports.list = function(req, res, next) {
-    var query = User.find().sort('name');
+    var query;
+    if(req.query.all){
+        query = User.find().select('-password').sort('name');
+    }
+    else{
+        query = User.find({enabled:1}).select('-password').sort('name');
+    }
+
 
     query.exec(function(err, users) {
         if (err) return next(err);
@@ -32,13 +39,21 @@ exports.list = function(req, res, next) {
     });
 };
 
+exports.toggleEnabled = function(req, res, next) {
+
+    User.update({_id: req.userid}, {
+        "$bit": { "enabled": { "xor": 1 } }
+    }, function(err) {
+        if (err) return next(err);
+        res.sendStatus(200);
+    });
+};
+
 
 
 exports.requiresLogin = function(req, res, next) {
     if (!req.isAuthenticated()) {
-        return res.status(401).send({
-            message: 'User is not logged in'
-        });
+        return res.sendStatus(401);
     }
 
     next();
@@ -52,10 +67,13 @@ exports.hasAuthorization = function(roles) {
             if (_.intersection(req.user.roles, roles).length) {
                 return next();
             } else {
-                return res.status(403).send({
-                    message: 'User is not authorized'
-                });
+                return res.sendStatus(403);
             }
         });
     };
+};
+
+exports.userByID = function(req, res, next, id) {
+    req.userid = id ;
+    next();
 };

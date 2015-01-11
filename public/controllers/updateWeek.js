@@ -4,7 +4,8 @@ angular.module('MyApp')
         $scope.selected.selectedPlayers = [];
         $scope.selected.selectedSubstitutes = [];
         $scope.substitutes = [];
-        //$scope.users = [];
+        $scope.disableDate = true;
+        $scope.titulo = 'Modificar Jornada';
 
         $scope.users = User.query();
 

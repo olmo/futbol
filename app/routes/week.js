@@ -13,5 +13,8 @@ module.exports = function(app) {
     app.route('/api/week/:id')
         .get(week.read);
 
+    app.route('/api/week/:id/generateTeams')
+        .get(week.generateTeams);
+
 
 };

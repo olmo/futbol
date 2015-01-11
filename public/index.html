@@ -14,7 +14,7 @@
 
 
 </head>
-<body>
+<body ng-controller="ApplicationController">
   <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
     <div class="navbar-header">
 
@@ -25,7 +25,8 @@
       <ul class="nav navbar-nav">
         <li data-match-route="/$"><a href="/">Inicio</a></li>
         <li data-match-route="/valoraciones" ng-if="currentUser"><a href="/valoraciones">Valorar Jugadores</a></li>
-        <li data-match-route="/weeks/add" ng-if="currentUser.roles.indexOf('admin')!=-1"><a href="/weeks/add">Añadir Jornada</a></li>
+        <li data-match-route="/weeks/add" ng-if="isAuthorized('admin')"><a href="/weeks/add">Añadir Jornada</a></li>
+        <li data-match-route="/admin/users" ng-if="isAuthorized('admin')"><a href="/admin/users">Administrar usuarios</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
         <li data-match-route="/login"><a href="/login">Entrar</a></li>

@@ -5,6 +5,8 @@ angular.module('MyApp')
         $scope.selected.selectedSubstitutes = [];
         $scope.substitutes = [];
         $scope.date = undefined;
+        $scope.disableDate = false;
+        $scope.titulo = 'Añadir Jornada';
 
         $scope.users = User.query(function(){
             var i;

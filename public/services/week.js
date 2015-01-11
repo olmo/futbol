@@ -5,4 +5,7 @@ angular.module('MyApp')
                 'update': { method:'PUT' }
             }
         );
+    }])
+    .factory('WeekGenerate', ['$resource', function($resource) {
+        return $resource('/api/week/:_id/generateTeams');
     }]);

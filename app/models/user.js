@@ -11,7 +11,8 @@ var userSchema = new mongoose.Schema({
             enum: ['user', 'admin']
         }],
         default: ['user']
-    }
+    },
+    enabled: {type: Number}
 });
 
 userSchema.pre('save', function(next) {

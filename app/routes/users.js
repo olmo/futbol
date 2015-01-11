@@ -12,6 +12,9 @@ module.exports = function(app) {
     app.route('/api/users/signup')
         .post(users.signup);
 
+    app.route('/api/users/:id/toggleEnabled')
+        .get(users.requiresLogin, users.hasAuthorization(['admin']), users.toggleEnabled);
+
     app.route('/api/users')
         .get(users.list);
     //.put(users.requiresLogin, articles.hasAuthorization, articles.update)
@@ -19,4 +22,5 @@ module.exports = function(app) {
 
     // Finish by binding the article middleware
     //app.param('id', shows.articleByID);
+    app.param('id', users.userByID);
 };

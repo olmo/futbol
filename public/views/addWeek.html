@@ -1,7 +1,7 @@
 <div class="container col-sm-12 col-md-8 col-lg-8">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Añadir Jornada
+            {{titulo}}
         </div>
         <div class="panel-body">
 
@@ -15,7 +15,7 @@
                             <div class="input-group col-sm-7">
                                 <input class="form-control" type="text" id="date" datepicker-popup="dd/MM/yyyy"
                                        name="date" ng-model="date" is-open="opened"
-                                       close-text="Close" datepicker-options="dateOptions" required autofocus>
+                                       close-text="Close" datepicker-options="dateOptions" required autofocus ng-disabled="disableDate">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>

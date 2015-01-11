@@ -18,14 +18,7 @@ angular.module('MyApp')
         $scope.calendarDay = new Date();
 
         function showModal(action, event) {
-            /*$modal.open({
-             templateUrl: 'modalContent.html',
-             controller: function($scope, $modalInstance) {
-             $scope.$modalInstance = $modalInstance;
-             $scope.action = action;
-             $scope.event = event;
-             }
-             });*/
+
         }
 
         $scope.eventClicked = function(event) {

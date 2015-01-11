@@ -2,11 +2,15 @@
     <div class="panel panel-default ">
         <div class="panel-heading">
             Semana {{week.date | date : 'dd/MM/yyyy'}}
-            <a href="javascript:;" ng-click="deleteWeek()" ng-if="currentUser && currentUser.roles.indexOf('admin')!=-1"><span class="pull-right glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-            <a ng-href="/weeks/update/{{week._id}}" ng-if="currentUser && currentUser.roles.indexOf('admin')!=-1"><span class="pull-right glyphicon glyphicon-edit" aria-hidden="true"  style="margin-right: 5px;"></span></a>
+            <div class="pull-right">
+                <a href="javascript:;" ng-click="generateTeams()" ng-if="currentUser && currentUser.roles.indexOf('admin')!=-1"><span class="glyphicon glyphicon-refresh" aria-hidden="true"  style="margin-right: 5px;"></span></a>
+                <a ng-href="/weeks/update/{{week._id}}" ng-if="currentUser && currentUser.roles.indexOf('admin')!=-1"><span class="glyphicon glyphicon-edit" aria-hidden="true"  style="margin-right: 5px;"></span></a>
+                <a href="javascript:;" ng-click="deleteWeek()" ng-if="currentUser && currentUser.roles.indexOf('admin')!=-1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>
+
         </div>
         <div class="panel-body">
-            <div class="row">
+            <div class="row" ng-if="week.team1.length>0">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div style="margin-left:15px; margin-right: 15px;">
                         <table class="table table-striped text-center">
@@ -26,6 +30,12 @@
                             <tbody><tr ng-repeat="player in week.team2 | orderBy:'-name':true"><td>{{player.name}}</td></tr></tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+
+            <div class="row" ng-if="week.team1.length==0">
+                <div class="col-md-12">Jugadores:
+                    <span ng-repeat="player in week.players | orderBy:'-name':true">{{player.name}}{{$last ? '' : ', '}}</span>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 angular.module('MyApp')
-    .controller('ArticlesCtrl', ['$scope', '$location', '$stateParams', '$http', 'Week', function($scope, $location, $stateParams, $http, Week) {
+    .controller('viewNextWeekCtrl', ['$scope', '$location', '$stateParams', '$http', 'Week', 'WeekGenerate', function($scope, $location, $stateParams, $http, Week, WeekGenerate) {
 
         $http.get('/api/week/getNext')
             .success(function(week) {
@@ -21,6 +21,12 @@ angular.module('MyApp')
 
         $scope.deleteWeek = function(){
             Week.delete({id:$scope.week._id});
+        };
+
+        $scope.generateTeams = function(){
+            WeekGenerate.get({ _id: $scope.week._id }, function(week) {
+                $scope.week = week;
+            });
         };
 
     }]);
