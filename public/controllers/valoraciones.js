@@ -3,6 +3,7 @@ angular.module('MyApp')
         $scope.max = 5;
         $scope.isReadonly = true;
         $scope.rate = 2;
+        $scope.animClass = 'animRotate';
 
         function getRatings() {
 

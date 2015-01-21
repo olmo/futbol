@@ -1,6 +1,6 @@
 angular.module('MyApp')
-    .controller('ApplicationController', ['$scope', 'Auth', 'AUTH_EVENTS', '$location', '$alert',
-        function ($scope, Auth, AUTH_EVENTS, $location, $alert) {
+    .controller('ApplicationController', ['$scope', 'Auth', 'AUTH_EVENTS', '$location', '$alert', '$rootScope',
+        function ($scope, Auth, AUTH_EVENTS, $location, $alert, $rootScope) {
             $scope.isAuthenticated = Auth.isAuthenticated();
             $scope.isAuthorized = Auth.isAuthorized;
 
@@ -19,7 +19,6 @@ angular.module('MyApp')
                     duration: 3
                 });
             });
-
 
         }
     ]);

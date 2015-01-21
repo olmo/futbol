@@ -1,6 +1,8 @@
 angular.module('MyApp')
     .controller('ViewWeekCtrl', ['$scope', '$location', '$stateParams', 'Week', 'WeekGenerate', function($scope, $location, $stateParams, Week, WeekGenerate) {
 
+        $scope.animClass = 'animScale';
+
         Week.get({ _id: $stateParams.id }, function(week) {
             $scope.week = week;
 

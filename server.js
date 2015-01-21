@@ -3,7 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var compress = require('compression')
+var compress = require('compression');
 
 var mongoose = require('mongoose');
 var _ = require('lodash');

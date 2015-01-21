@@ -1,4 +1,5 @@
-angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'ui.router', 'mgcrea.ngStrap', 'ngSanitize', 'ui.select', 'mwl.calendar'])
+angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'ui.router', 'ngAnimate',
+    'mgcrea.ngStrap', 'ngSanitize', 'ui.select', 'mwl.calendar'])
     .constant('AUTH_EVENTS', {
         loginSuccess: 'auth-login-success',
         loginFailed: 'auth-login-failed',
@@ -70,6 +71,10 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'ui
                 templateUrl: "views/adminUsers.html",
                 controller: 'AdminUsersCtrl',
                 authorizedRoles: ['admin']
+            }).state('upload', {
+                url: "/upload",
+                templateUrl: "views/upload.html",
+                controller: 'UploadCtrl'
             });
 
 

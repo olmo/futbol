@@ -1,69 +1,67 @@
-<div class="container col-sm-12 col-md-8 col-lg-8">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            {{titulo}}
-        </div>
-        <div class="panel-body">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{titulo}}
+    </div>
+    <div class="panel-body">
 
-            <div class="row show-list">
-                <form class="form-horizontal" method="post" ng-submit="addWeek()" name="addWeekForm">
+        <div class="row show-list">
+            <form class="form-horizontal" method="post" ng-submit="addWeek()" name="addWeekForm">
 
-                    <div class="panel-body">
-                        <div class="form-group"
-                             ng-class="{ 'has-success' : addWeekForm.date.$valid && addWeekForm.date.$dirty, 'has-error' : addWeekForm.date.$invalid && addWeekForm.date.$dirty }">
-                            <label class="col-sm-3 control-label">Fecha</label>
-                            <div class="input-group col-sm-7">
-                                <input class="form-control" type="text" id="date" datepicker-popup="dd/MM/yyyy"
-                                       name="date" ng-model="date" is-open="opened"
-                                       close-text="Close" datepicker-options="dateOptions" required autofocus ng-disabled="disableDate">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                                </span>
-                            </div>
-
-                            <div class="help-block text-danger" ng-if="addWeekForm.date.$dirty"
-                                 ng-messages="addWeekForm.date.$error">
-                                <div ng-message="required">Your date is required.</div>
-                                <div ng-message="email">Your date is invalid.</div>
-                            </div>
+                <div class="panel-body">
+                    <div class="form-group"
+                         ng-class="{ 'has-success' : addWeekForm.date.$valid && addWeekForm.date.$dirty, 'has-error' : addWeekForm.date.$invalid && addWeekForm.date.$dirty }">
+                        <label class="col-sm-3 control-label">Fecha</label>
+                        <div class="input-group col-sm-7">
+                            <input class="form-control" type="text" id="date" datepicker-popup="dd/MM/yyyy"
+                                   name="date" ng-model="date" is-open="opened"
+                                   close-text="Close" datepicker-options="dateOptions" required autofocus ng-disabled="disableDate">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Jugadores</label>
-                            <div class="col-sm-7">
-
-                                <ui-select multiple ng-model="selected.selectedPlayers" theme="select2" style="width: 500px;">
-                                    <ui-select-match placeholder="Selecciona jugadores...">{{$item.name}}</ui-select-match>
-                                    <ui-select-choices repeat="player._id as player in users | propsFilter: {name: $select.search}">
-                                        <div ng-bind-html="player.name | highlight: $select.search"></div>
-                                    </ui-select-choices>
-                                </ui-select>
-
-                            </div>
+                        <div class="help-block text-danger" ng-if="addWeekForm.date.$dirty"
+                             ng-messages="addWeekForm.date.$error">
+                            <div ng-message="required">Your date is required.</div>
+                            <div ng-message="email">Your date is invalid.</div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Suplentes</label>
-                            <div class="col-sm-7">
-
-                                <ui-select multiple ng-model="selected.selectedSubstitutes" theme="select2" style="width: 500px;">
-                                    <ui-select-match placeholder="Selecciona jugadores...">{{$item.name}}</ui-select-match>
-                                    <ui-select-choices repeat="player._id as player in substitutes | propsFilter: {name: $select.search}">
-                                        <div ng-bind-html="player.name | highlight: $select.search"></div>
-                                    </ui-select-choices>
-                                </ui-select>
-
-                            </div>
-                        </div>
-
-
-
-                        <button type="submit" ng-disabled="addWeekForm.$invalid"
-                                class="btn btn-lg btn-block btn-primary">Guardar Jornada
-                        </button>
                     </div>
-                </form>
-            </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Jugadores</label>
+                        <div class="col-sm-7">
+
+                            <ui-select multiple ng-model="selected.selectedPlayers" theme="select2" style="width: 500px;">
+                                <ui-select-match placeholder="Selecciona jugadores...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="player._id as player in users | propsFilter: {name: $select.search}">
+                                    <div ng-bind-html="player.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Suplentes</label>
+                        <div class="col-sm-7">
+
+                            <ui-select multiple ng-model="selected.selectedSubstitutes" theme="select2" style="width: 500px;">
+                                <ui-select-match placeholder="Selecciona jugadores...">{{$item.name}}</ui-select-match>
+                                <ui-select-choices repeat="player._id as player in substitutes | propsFilter: {name: $select.search}">
+                                    <div ng-bind-html="player.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" ng-disabled="addWeekForm.$invalid"
+                            class="btn btn-lg btn-block btn-primary">Guardar Jornada
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
