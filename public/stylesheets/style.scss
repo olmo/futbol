@@ -404,3 +404,16 @@ input {
 .modal {
     z-index: 3000;
 }
+
+.btn-default {
+    outline: 0;
+}
+
+.btn-default:focus {
+    background: #fff;
+    outline: 0;
+}
+
+.btn-default:hover {
+    background: #dcdcdc;
+}
