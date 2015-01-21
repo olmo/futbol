@@ -4,7 +4,7 @@ angular.module('MyApp')
 
         $scope.animClass = 'animScale';
 
-        if($state.name==='main.viewWeek'){
+        if($state.current.name==='main.viewWeek'){
             Week.get({ _id: $stateParams.id }, function(week) {
                 $scope.week = week;
 
