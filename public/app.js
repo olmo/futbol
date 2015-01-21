@@ -32,7 +32,7 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'ui
             .state('main.nextWeek', {
                 url: "/",
                 templateUrl: "views/viewWeek.html",
-                controller: 'viewNextWeekCtrl'
+                controller: 'ViewWeekCtrl'
             })
             .state('main.valoraciones', {
                 url: "/valoraciones",
